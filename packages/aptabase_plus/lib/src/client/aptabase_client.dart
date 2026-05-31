@@ -21,15 +21,13 @@ class AptabaseClient {
     AptabaseSystemInfoProvider? systemInfoProvider,
     AptabaseTransport? transport,
     SessionIdGenerator? sessionIdGenerator,
-    String sdkVersion = defaultSdkVersion,
-  })  : options = options,
-        storage = storage ?? MemoryAptabaseStorage(),
-        systemInfoProvider =
-            systemInfoProvider ?? const StaticAptabaseSystemInfoProvider.defaults(),
-        transport = transport ?? HttpAptabaseTransport(),
-        sessionIdGenerator = sessionIdGenerator ?? RandomSessionIdGenerator(),
-        sdkVersion = sdkVersion,
-        _logger = AptabaseLogger(options) {
+    this.sdkVersion = defaultSdkVersion,
+  }) : options = options,
+       storage = storage ?? MemoryAptabaseStorage(),
+       systemInfoProvider = systemInfoProvider ?? const StaticAptabaseSystemInfoProvider.defaults(),
+       transport = transport ?? HttpAptabaseTransport(),
+       sessionIdGenerator = sessionIdGenerator ?? RandomSessionIdGenerator(),
+       _logger = AptabaseLogger(options) {
     _sessionId = this.sessionIdGenerator.generate();
   }
 
@@ -54,9 +52,7 @@ class AptabaseClient {
 
   AptabaseAppKey? get _parsedAppKey => AptabaseAppKey.tryParse(appKey);
 
-  Uri? get _eventsEndpoint => _parsedAppKey?.eventsEndpoint(
-        selfHostedHost: options.host,
-      );
+  Uri? get _eventsEndpoint => _parsedAppKey?.eventsEndpoint(selfHostedHost: options.host);
 
   bool get isEnabled => _eventsEndpoint != null;
 
@@ -84,10 +80,7 @@ class AptabaseClient {
   void start() {
     if (!isEnabled || _timer != null) return;
 
-    _timer = Timer.periodic(
-      options.tickDuration,
-      (_) => unawaited(flush(reason: 'timer')),
-    );
+    _timer = Timer.periodic(options.tickDuration, (_) => unawaited(flush(reason: 'timer')));
   }
 
   /// Stops the periodic flush timer.
@@ -133,19 +126,14 @@ class AptabaseClient {
   }
 
   /// Records an event with the given name and optional properties.
-  Future<void> trackEvent(
-    String eventName, {
-    Map<String, Object?>? props,
-  }) async {
+  Future<void> trackEvent(String eventName, {Map<String, Object?>? props}) async {
     if (!isEnabled || !_isInitialized) {
       _logger.info('Tracking is disabled or the client has not been initialized.');
       return;
     }
 
     final timestamp = DateTime.now().toUtc();
-    final systemInfo = (await systemInfoProvider.getSystemInfo()).copyWith(
-      sdkVersion: sdkVersion,
-    );
+    final systemInfo = (await systemInfoProvider.getSystemInfo()).copyWith(sdkVersion: sdkVersion);
     final event = AptabaseEvent(
       timestamp: timestamp,
       sessionId: _evaluateSessionId(),
@@ -187,9 +175,7 @@ class AptabaseClient {
       }
 
       if (result.isRetryable) {
-        _logger.error(
-          'Aptabase send failed with status ${result.statusCode}. Will retry later.',
-        );
+        _logger.error('Aptabase send failed with status ${result.statusCode}. Will retry later.');
         return AptabaseSendResult.retry;
       }
 

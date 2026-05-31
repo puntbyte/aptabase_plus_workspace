@@ -9,9 +9,9 @@ class AptabaseOptions {
     this.batchLength = _maxBatchLength,
     this.debugLogEnabled = false,
   }) : assert(
-          batchLength > 0 && batchLength <= _maxBatchLength,
-          'batchLength must be between 1 and $_maxBatchLength.',
-        );
+         batchLength > 0 && batchLength <= _maxBatchLength,
+         'batchLength must be between 1 and $_maxBatchLength.',
+       );
 
   /// Required only when the app key uses the self-hosted `SH` region.
   final String? host;

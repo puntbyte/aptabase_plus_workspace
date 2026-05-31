@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:aptabase_plus/aptabase_plus.dart';
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:flutter/foundation.dart';
@@ -10,8 +8,8 @@ class FlutterAptabaseSystemInfoProvider implements AptabaseSystemInfoProvider {
   FlutterAptabaseSystemInfoProvider({
     DeviceInfoPlugin? deviceInfo,
     Future<PackageInfo>? packageInfo,
-  })  : _deviceInfo = deviceInfo ?? DeviceInfoPlugin(),
-        _packageInfo = packageInfo;
+  }) : _deviceInfo = deviceInfo ?? DeviceInfoPlugin(),
+       _packageInfo = packageInfo;
 
   static const _androidOsName = 'Android';
   static const _iPadOsName = 'iPadOS';
@@ -43,10 +41,7 @@ class FlutterAptabaseSystemInfoProvider implements AptabaseSystemInfoProvider {
   Future<({String name, String version})> _getOsInfo() async {
     if (kIsWeb) {
       final info = await _deviceInfo.webBrowserInfo;
-      return (
-        name: info.browserName.name,
-        version: info.appVersion ?? _unknownOsVersion,
-      );
+      return (name: info.browserName.name, version: info.appVersion ?? _unknownOsVersion);
     }
 
     return switch (defaultTargetPlatform) {
@@ -55,10 +50,7 @@ class FlutterAptabaseSystemInfoProvider implements AptabaseSystemInfoProvider {
       TargetPlatform.macOS => _macOsInfo(),
       TargetPlatform.windows => _windowsInfo(),
       TargetPlatform.linux => _linuxInfo(),
-      TargetPlatform.fuchsia => Future.value((
-          name: _fuchsiaOsName,
-          version: _unknownOsVersion,
-        )),
+      TargetPlatform.fuchsia => Future.value((name: _fuchsiaOsName, version: _unknownOsVersion)),
     };
   }
 

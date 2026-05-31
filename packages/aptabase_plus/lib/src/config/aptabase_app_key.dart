@@ -2,11 +2,7 @@ import 'aptabase_region.dart';
 
 /// Parsed Aptabase app key.
 class AptabaseAppKey {
-  const AptabaseAppKey._({
-    required this.value,
-    required this.region,
-    required this.projectId,
-  });
+  const AptabaseAppKey._({required this.value, required this.region, required this.projectId});
 
   /// Raw app key value.
   final String value;
@@ -27,11 +23,7 @@ class AptabaseAppKey {
     final region = AptabaseRegion.fromCode(parts[1]);
     if (region == null) return null;
 
-    return AptabaseAppKey._(
-      value: value,
-      region: region,
-      projectId: parts[2],
-    );
+    return AptabaseAppKey._(value: value, region: region, projectId: parts[2]);
   }
 
   /// Returns the events endpoint for this key, or `null` when the key cannot be

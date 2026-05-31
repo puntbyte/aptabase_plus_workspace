@@ -17,17 +17,11 @@ class HttpAptabaseTransport implements AptabaseTransport {
   }) async {
     final response = await _client.post(
       endpoint,
-      headers: {
-        'App-Key': appKey,
-        'Content-Type': 'application/json; charset=UTF-8',
-      },
+      headers: {'App-Key': appKey, 'Content-Type': 'application/json; charset=UTF-8'},
       body: '[${events.join(',')}]',
     );
 
-    return AptabaseTransportResult(
-      statusCode: response.statusCode,
-      body: response.body,
-    );
+    return AptabaseTransportResult(statusCode: response.statusCode, body: response.body);
   }
 
   void close() => _client.close();

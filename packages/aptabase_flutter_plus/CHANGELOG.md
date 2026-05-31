@@ -1,6 +1,5 @@
-# Changelog
-
 ## 0.1.0
 
-- Initial Flutter adapter split from `aptabase_flutter`.
-- Added Flutter lifecycle controller, system-info provider, and `SharedPreferencesAsync` storage adapter.
+- Initial Flutter integration package for Aptabase Plus.
+- Added Flutter lifecycle integration and Flutter system-info provider.
+- Storage is now injected instead of bundled; use a companion storage adapter package for persistence.

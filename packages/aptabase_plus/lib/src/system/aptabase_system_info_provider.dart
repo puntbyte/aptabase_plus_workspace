@@ -12,14 +12,14 @@ class StaticAptabaseSystemInfoProvider implements AptabaseSystemInfoProvider {
   /// Minimal default values for CLI/tests. Production apps should provide their
   /// real app version, build number, locale, and runtime details.
   const StaticAptabaseSystemInfoProvider.defaults()
-      : systemInfo = const AptabaseSystemInfo(
-          osName: 'dart',
-          osVersion: '',
-          locale: 'en',
-          appVersion: '0.0.0',
-          appBuildNumber: '0',
-          isDebug: false,
-        );
+    : systemInfo = const AptabaseSystemInfo(
+        osName: 'dart',
+        osVersion: '',
+        locale: 'en',
+        appVersion: '0.0.0',
+        appBuildNumber: '0',
+        isDebug: false,
+      );
 
   final AptabaseSystemInfo systemInfo;
 

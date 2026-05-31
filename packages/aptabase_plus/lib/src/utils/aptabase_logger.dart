@@ -18,12 +18,6 @@ class AptabaseLogger {
   }
 
   void error(String message, [Object? error, StackTrace? stackTrace]) {
-    developer.log(
-      message,
-      name: 'Aptabase',
-      level: 1000,
-      error: error,
-      stackTrace: stackTrace,
-    );
+    developer.log(message, name: 'Aptabase', level: 1000, error: error, stackTrace: stackTrace);
   }
 }

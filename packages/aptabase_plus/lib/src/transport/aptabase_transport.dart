@@ -1,9 +1,6 @@
 /// Result returned by an Aptabase event transport.
 class AptabaseTransportResult {
-  const AptabaseTransportResult({
-    required this.statusCode,
-    this.body = '',
-  });
+  const AptabaseTransportResult({required this.statusCode, this.body = ''});
 
   final int statusCode;
   final String body;

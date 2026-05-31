@@ -1,10 +1,7 @@
 import 'package:aptabase_plus/aptabase_plus.dart';
 
 Future<void> main(List<String> args) async {
-  const appKey = String.fromEnvironment(
-    'APTABASE_APP_KEY',
-    defaultValue: 'A-DEV-0000000000',
-  );
+  const appKey = String.fromEnvironment('APTABASE_APP_KEY', defaultValue: 'A-DEV-0000000000');
 
   final client = await Aptabase.init(
     appKey,
@@ -24,10 +21,7 @@ Future<void> main(List<String> args) async {
 
   await client.trackEvent(
     'dart_example_started',
-    props: {
-      'runtime': 'dart',
-      'argumentCount': args.length,
-    },
+    props: {'runtime': 'dart', 'argumentCount': args.length},
   );
 
   await client.flush();

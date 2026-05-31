@@ -11,6 +11,8 @@ resolution: workspace
 dependencies:
   aptabase_flutter_plus:
     path: ..
+  aptabase_storage_shared_preferences_plus:
+    path: ../../aptabase_storage_shared_preferences_plus
   flutter:
     sdk: flutter
 

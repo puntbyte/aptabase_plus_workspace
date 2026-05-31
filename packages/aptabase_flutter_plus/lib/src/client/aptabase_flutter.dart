@@ -2,10 +2,14 @@ import 'package:aptabase_plus/aptabase_plus.dart';
 import 'package:flutter/widgets.dart';
 
 import '../lifecycle/flutter_aptabase_lifecycle.dart';
-import '../storage/shared_preferences_aptabase_storage.dart';
 import '../system/flutter_aptabase_system_info_provider.dart';
 
 /// Flutter-oriented Aptabase facade.
+///
+/// This package wires Flutter lifecycle callbacks and Flutter system metadata
+/// into the pure Dart [AptabaseClient]. Storage is intentionally injected so
+/// apps can choose the persistence backend that fits their runtime and offline
+/// requirements.
 class AptabaseFlutter {
   AptabaseFlutter._();
 
@@ -38,7 +42,7 @@ class AptabaseFlutter {
     final client = AptabaseClient(
       appKey: appKey,
       options: options,
-      storage: storage ?? SharedPreferencesAptabaseStorage(),
+      storage: storage,
       systemInfoProvider: systemInfoProvider ?? FlutterAptabaseSystemInfoProvider(),
       transport: transport,
       sessionIdGenerator: sessionIdGenerator,

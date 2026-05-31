@@ -1,17 +1,16 @@
 import 'package:aptabase_flutter_plus/aptabase_flutter_plus.dart';
+import 'package:aptabase_storage_shared_preferences_plus/aptabase_storage_shared_preferences_plus.dart';
 import 'package:flutter/material.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  const appKey = String.fromEnvironment(
-    'APTABASE_APP_KEY',
-    defaultValue: 'A-DEV-0000000000',
-  );
+  const appKey = String.fromEnvironment('APTABASE_APP_KEY', defaultValue: 'A-DEV-0000000000');
 
   await Aptabase.init(
     appKey,
     options: const AptabaseOptions(debugLogEnabled: true),
+    storage: SharedPreferencesAptabaseStorage(),
   );
 
   runApp(const AptabaseExampleApp());
@@ -43,10 +42,7 @@ class _AptabaseExamplePageState extends State<AptabaseExamplePage> {
   Future<void> _trackTap() async {
     setState(() => _count++);
 
-    await Aptabase.instance.trackEvent(
-      'example_button_tapped',
-      props: {'count': _count},
-    );
+    await Aptabase.instance.trackEvent('example_button_tapped', props: {'count': _count});
   }
 
   @override
@@ -59,10 +55,7 @@ class _AptabaseExamplePageState extends State<AptabaseExamplePage> {
           children: [
             Text('Tracked taps: $_count'),
             const SizedBox(height: 16),
-            FilledButton(
-              onPressed: _trackTap,
-              child: const Text('Track event'),
-            ),
+            FilledButton(onPressed: _trackTap, child: const Text('Track event')),
           ],
         ),
       ),
