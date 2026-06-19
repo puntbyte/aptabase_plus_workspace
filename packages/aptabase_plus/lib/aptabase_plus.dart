@@ -2,7 +2,7 @@
 library;
 
 export 'src/client/aptabase_client.dart';
-export 'src/client/aptabase_facade.dart';
+export 'src/client/aptabase.dart';
 export 'src/config/aptabase_app_key.dart';
 export 'src/config/aptabase_options.dart';
 export 'src/config/aptabase_region.dart';

@@ -23,11 +23,11 @@ class AptabaseClient {
     SessionIdGenerator? sessionIdGenerator,
     this.sdkVersion = defaultSdkVersion,
   }) : options = options,
-       storage = storage ?? MemoryAptabaseStorage(),
-       systemInfoProvider = systemInfoProvider ?? const StaticAptabaseSystemInfoProvider.defaults(),
-       transport = transport ?? HttpAptabaseTransport(),
-       sessionIdGenerator = sessionIdGenerator ?? RandomSessionIdGenerator(),
-       _logger = AptabaseLogger(options) {
+        storage = storage ?? MemoryAptabaseStorage(),
+        systemInfoProvider = systemInfoProvider ?? StaticAptabaseSystemInfoProvider.defaults(),
+        transport = transport ?? HttpAptabaseTransport(),
+        sessionIdGenerator = sessionIdGenerator ?? RandomSessionIdGenerator(),
+        _logger = AptabaseLogger(options) {
     _sessionId = this.sessionIdGenerator.generate();
   }
 
