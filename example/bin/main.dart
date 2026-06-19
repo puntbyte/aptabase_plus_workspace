@@ -3,7 +3,7 @@ import 'package:aptabase_plus/aptabase_plus.dart';
 Future<void> main(List<String> args) async {
   const appKey = String.fromEnvironment('APTABASE_APP_KEY', defaultValue: 'A-DEV-0000000000');
 
-  final client = await Aptabase.init(
+  final client = await AptabaseCore.init(
     appKey,
     options: const AptabaseOptions(debugLogEnabled: true),
     systemInfoProvider: const StaticAptabaseSystemInfoProvider(
@@ -25,5 +25,5 @@ Future<void> main(List<String> args) async {
   );
 
   await client.flush();
-  await Aptabase.dispose(flush: false);
+  await AptabaseCore.dispose(flush: false);
 }

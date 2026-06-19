@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:aptabase_plus/aptabase_plus.dart';
-import 'package:aptabase_storage_hive_ce_plus/aptabase_storage_hive_ce_plus.dart';
+import 'package:aptabase_plus_hive_ce/src/hive_ce_aptabase_storage.dart';
 import 'package:hive_ce/hive_ce.dart';
 import 'package:test/test.dart';
 

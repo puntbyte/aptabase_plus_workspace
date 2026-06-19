@@ -10,7 +10,7 @@ void main() {
         appKey: 'A-DEV-0123456789',
         storage: storage,
         transport: transport,
-        systemInfoProvider: const StaticAptabaseSystemInfoProvider.defaults(),
+        systemInfoProvider: StaticAptabaseSystemInfoProvider.defaults(),
       );
 
       await client.init(startTimer: false);
@@ -32,7 +32,7 @@ void main() {
         appKey: 'A-DEV-0123456789',
         storage: storage,
         transport: transport,
-        systemInfoProvider: const StaticAptabaseSystemInfoProvider.defaults(),
+        systemInfoProvider: StaticAptabaseSystemInfoProvider.defaults(),
       );
 
       await client.init(startTimer: false);
