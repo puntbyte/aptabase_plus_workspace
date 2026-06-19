@@ -1,5 +1,15 @@
 import 'aptabase_system_info.dart';
 
+/// Resolves `true` only when the code is executed in debug mode.
+bool get _isDartDebug {
+  var debug = false;
+  assert(() {
+    debug = true;
+    return true;
+  }());
+  return debug;
+}
+
 /// Supplies runtime metadata for events.
 abstract interface class AptabaseSystemInfoProvider {
   Future<AptabaseSystemInfo> getSystemInfo();
@@ -11,15 +21,15 @@ class StaticAptabaseSystemInfoProvider implements AptabaseSystemInfoProvider {
 
   /// Minimal default values for CLI/tests. Production apps should provide their
   /// real app version, build number, locale, and runtime details.
-  const StaticAptabaseSystemInfoProvider.defaults()
-    : systemInfo = const AptabaseSystemInfo(
-        osName: 'dart',
-        osVersion: '',
-        locale: 'en',
-        appVersion: '0.0.0',
-        appBuildNumber: '0',
-        isDebug: false,
-      );
+  StaticAptabaseSystemInfoProvider.defaults()
+      : systemInfo = AptabaseSystemInfo(
+    osName: 'dart',
+    osVersion: '',
+    locale: 'en',
+    appVersion: '0.0.0',
+    appBuildNumber: '0',
+    isDebug: _isDartDebug,
+  );
 
   final AptabaseSystemInfo systemInfo;
 
