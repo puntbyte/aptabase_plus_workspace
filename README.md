@@ -40,7 +40,7 @@ dependencies:
 ```
 
 ```dart
-import 'package:aptabase_flutter_plus/aptabase_flutter_plus.dart';
+import 'package:aptabase_flutter_plus/aptabase_plus_flutter.dart';
 import 'package:aptabase_storage_shared_preferences_plus/aptabase_storage_shared_preferences_plus.dart';
 
 await Aptabase.init(
@@ -58,7 +58,7 @@ dependencies:
   aptabase_flutter_plus:
     path: packages/aptabase_flutter_plus
   aptabase_storage_hive_ce_plus:
-    path: packages/aptabase_storage_hive_ce_plus
+    path: packages/aptabase_plus_hive_ce
 ```
 
 ```dart
@@ -81,7 +81,7 @@ dependencies:
   aptabase_plus:
     path: packages/aptabase_plus
   aptabase_storage_hive_ce_plus:
-    path: packages/aptabase_storage_hive_ce_plus
+    path: packages/aptabase_plus_hive_ce
 ```
 
 ```dart
@@ -152,7 +152,7 @@ Run pure Dart tests:
 
 ```bash
 dart test packages/aptabase_plus
-dart test packages/aptabase_storage_hive_ce_plus
+dart test packages/aptabase_plus_hive_ce
 ```
 
 Run Flutter tests:

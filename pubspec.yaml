@@ -6,10 +6,6 @@ environment:
 
 workspace:
   - packages/aptabase_plus
-  - packages/aptabase_plus/example
-  - packages/aptabase_flutter_plus
-  - packages/aptabase_flutter_plus/example
-  - packages/aptabase_storage_shared_preferences_plus
-  - packages/aptabase_storage_shared_preferences_plus/example
-  - packages/aptabase_storage_hive_ce_plus
-  - packages/aptabase_storage_hive_ce_plus/example
+  - packages/aptabase_plus_flutter
+  - packages/aptabase_plus_hive_ce
+  - example
