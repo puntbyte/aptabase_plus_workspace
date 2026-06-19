@@ -2,7 +2,12 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/aptabase_plus_workspace.iml" filepath="$PROJECT_DIR$/.idea/aptabase_plus_workspace.iml" />
+<module fileurl="file://$PROJECT_DIR$/packages/aptabase_plus/melos_aptabase_plus.iml" filepath="$PROJECT_DIR$/packages/aptabase_plus/melos_aptabase_plus.iml"/>
+<module fileurl="file://$PROJECT_DIR$/example/melos_aptabase_plus_example.iml" filepath="$PROJECT_DIR$/example/melos_aptabase_plus_example.iml"/>
+<module fileurl="file://$PROJECT_DIR$/packages/aptabase_plus_flutter/melos_aptabase_plus_flutter.iml" filepath="$PROJECT_DIR$/packages/aptabase_plus_flutter/melos_aptabase_plus_flutter.iml"/>
+<module fileurl="file://$PROJECT_DIR$/packages/aptabase_plus_hive_ce/melos_aptabase_plus_hive_ce.iml" filepath="$PROJECT_DIR$/packages/aptabase_plus_hive_ce/melos_aptabase_plus_hive_ce.iml"/>
+<module fileurl="file://$PROJECT_DIR$/melos_aptabase_plus_workspace.iml" filepath="$PROJECT_DIR$/melos_aptabase_plus_workspace.iml"/>
+<module fileurl="file://$PROJECT_DIR$/.idea/aptabase_plus_workspace.iml" filepath="$PROJECT_DIR$/.idea/aptabase_plus_workspace.iml"/>
     </modules>
   </component>
 </project>
