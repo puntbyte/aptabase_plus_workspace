@@ -1,29 +1,38 @@
 import 'package:aptabase_plus/aptabase_plus.dart';
+import 'package:aptabase_plus_hive_ce/aptabase_plus_hive_ce.dart';
 
 Future<void> main(List<String> args) async {
+  // Read the app key from the environment, defaulting to DEV
   const appKey = String.fromEnvironment('APTABASE_APP_KEY', defaultValue: 'A-DEV-0000000000');
 
-  final client = await AptabaseCore.init(
+  // 1. Initialize persistent storage for pure Dart
+  final storage = await HiveCeAptabaseStorage.open(
+    directoryPath: '.dart_tool/aptabase_events',
+  );
+
+  // 2. Initialize the core client
+  await Aptabase.init(
     appKey,
+    storage: storage,
     options: const AptabaseOptions(debugLogEnabled: true),
-    systemInfoProvider: const StaticAptabaseSystemInfoProvider(
-      AptabaseSystemInfo(
-        osName: 'dart',
-        osVersion: '3.x',
-        locale: 'en',
-        appVersion: '1.0.0',
-        appBuildNumber: '1',
-        isDebug: true,
-      ),
-    ),
-    startTimer: false,
+    startTimer: false, // We will manually flush for this short-lived CLI script
   );
 
-  await client.trackEvent(
+  print('Tracking event from Dart CLI...');
+
+  // 3. Track events using the global singleton
+  await Aptabase.instance.trackEvent(
     'dart_example_started',
-    props: {'runtime': 'dart', 'argumentCount': args.length},
+    props: {
+      'runtime': 'dart',
+      'argumentCount': args.length,
+    },
   );
 
-  await client.flush();
-  await AptabaseCore.dispose(flush: false);
+  print('Flushing events...');
+  await Aptabase.instance.flush();
+
+  print('Shutting down...');
+  await Aptabase.dispose(flush: false);
+  await storage.close();
 }
